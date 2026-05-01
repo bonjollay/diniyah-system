@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Islamic Green Theme */
+        :root {
+            --primary: #1e5f38;
+            --secondary: #28a745;
+            --accent: #f8f9fa;
+            --dark: #1a1a1a;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i { color: #ffd700; margin-right: 0.5rem; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30,95,56,0.8), rgba(40,167,69,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><path fill="%23c3e6c3" d="M0 300Q200 100 400 300T800 300T1200 300V600H0z"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background: #ffd700;
+            color: var(--primary);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,215,0,0.6);
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Profil Section */
+        .profil {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .profil p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: white;
+            padding: 1.5rem;
+            border-left: 5px solid var(--secondary);
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Organization Structure */
+        .org-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .org-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .org-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .org-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .org-card ul {
+            list-style: none;
+        }
+
+        .org-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: var(--accent);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Moto */
+        .moto {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: var(--primary);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-mosque"></i>
+                Yayasan Talaga Kautsar
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>🌙 Yayasan Talaga Kautsar Indonesia</h1>
+            <p>Membangun Generasi Qur'ani Unggul Iman, Ilmu & Akhlak</p>
+            <a href="#profil" class="cta-btn">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="container">
+        <h2><i class="fas fa-user-tie"></i> Profil Yayasan</h2>
+        
+        <div class="profil">
+            <p><strong>Yayasan Talaga Kautsar Indonesia</strong> didirikan pada tanggal <strong>12 Maret 2026 M / 22 Ramadhan 1447 H</strong> oleh <strong>Muhamad Afif</strong> dan <strong>Eneng Yani Elviyani</strong> di kampung Talaga, Desa Nembol, Kecamatan Mandalawangi, Kabupaten Pandeglang, Provinsi Banten.</p>
+            
+            <div class="highlight">
+                <p>Yayasan ini termotivasi oleh realitas masyarakat yang masih terbatas fasilitas pendidikan keagamaan usia dini. Maka dicetuskan yayasan yang bergerak di bidang <strong>pendidikan, sosial dan keagamaan</strong>.</p>
+            </div>
+
+            <div class="moto">
+                <i class="fas fa-quote-left"></i>
+                Iman hanya kepada satu Tuhan, Ilmu tidak mengenal sekat dan batasan, dan amal kebaikan dipersembahkan kepada semua ciptaan Tuhan.
+                <i class="fas fa-quote-right"></i>
+            </div>
+
+            <h3>Visi & Misi</h3>
+            <p><strong>Visi:</strong> Membangun manusia Indonesia yang kuat iman Islamnya serta unggul ilmu pengetahuannya.</p>
+            <p><strong>Misi:</strong> Kokoh spritualitas, luas ilmu pengetahuan, mulia akhlak, tinggi tanggung jawab sosial, responsif terhadap sains dan teknologi, menjunjung nilai kemanusiaan.</p>
+
+            <h3>Struktur Organisasi</h3>
+            <div class="org-structure">
+                <div class="org-card">
+                    <h4><i class="fas fa-users"></i> Pembina</h4>
+                    <ul>
+                        <li><strong>Dr. Muhamad Afif, MA</strong></li>
+                    </ul>
+                </div>
+
+                <div class="org-card">
+                    <h4><i class="fas fa-eye"></i> Dewan Pengawas</h4>
+                    <ul>
+                        <li><strong>Ketua:</strong> Andi Suryapermana, S.S</li>
+                        <li>Mas Jahroniah, S.E</li>
+                        <li>Khaeruddin</li>
+                        <li>Aning</li>
+                    </ul>
+                </div>
+
+                <div class="org-card">
+                    <h4><i class="fas fa-handshake"></i> Dewan Penasihat</h4>
+                    <ul>
+                        <li><strong>Ketua:</strong> Jumroni, S.Sos</li>
+                        <li>Suharyo, S.S</li>
+                        <li>Dr. Nana Suryapermana, M.Pd</li>
+                        <li>Eti Sukmawati, S.Sos</li>
+                        <li>Abdullah</li>
+                    </ul>
+                </div>
+
+                <div class="org-card">
+                    <h4><i class="fas fa-user-chair"></i> Pengurus</h4>
+                    <ul>
+                        <li><strong>Ketua:</strong> Eneng Yani Elviyani, S.Pd.I</li>
+                        <li><strong>Wakil:</strong> Gugun Gunawan</li>
+                        <li><strong>Sekretaris:</strong> Hanafi, S.M.Hum</li>
+                        <li><strong>Wakil Sekretaris:</strong> Rifa Maulana Muhammad</li>
+                        <li><strong>Bendahara:</strong> Yeti Muliawati, S.Sos</li>
+                        <li><strong>Wakil Bendahara:</strong> Aulia Alif Rahma</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Bidang Kerja</h3>
+            <div class="org-structure">
+                <div class="org-card">
+                    <h4>📚 Pendidikan</h4>
+                    <p><strong>Ketua:</strong> Enong Liawati, S.Pd.I<br>
+                    <strong>Anggota:</strong> E. St. Aisyah, S.Pd.I Gr</p>
+                </div>
+                <div class="org-card">
+                    <h4>🤝 Sosial Budaya</h4>
+                    <p><strong>Ketua:</strong> Eem Syamsiah, S.Pd.I<br>
+                    <strong>Anggota:</strong> Eka Uswatul Khasanah</p>
+                </div>
+                <div class="org-card">
+                    <h4>💰 Ekonomi & Usaha</h4>
+                    <p><strong>Ketua:</strong> Mulyanah<br>
+                    <strong>Anggota:</strong> Wahyu Purnama, Ari Ilham Syaban</p>
+                </div>
+                <div class="org-card">
+                    <h4>📱 Humas & IT</h4>
+                    <p><strong>Ketua:</strong> Aqil Shirath Risqullah Kusnadi<br>
+                    <strong>Anggota:</strong> Dudung Sugriwa, M. Fadhlurohman al Azis</p>
+                </div>
+                <div class="org-card">
+                    <h4>🏗️ Sarana Prasarana</h4>
+                    <p><strong>Ketua:</strong> Hermawan<br>
+                    <strong>Anggota:</strong> Ayasy Almuhandis, Abdul Fatah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program" class="container">
+        <h2><i class="fas fa-book-open"></i> Program Unggulan</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mosque"></i></div>
+                <h3>Madrasah Diniyah</h3>
+                <p>Pendidikan agama Islam untuk anak usia dini</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3>Kelas Tahfidz</h3>
+                <p>Program hafalan Al-Qur'an dengan metode efektif</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Bantuan Sosial</h3>
+                <p>Santunan anak yatim dan program kemanusiaan</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-laptop"></i></div>
+                <h3>Digitalisasi</h3>
+                <p>Pendidikan berbasis teknologi informasi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="container">
+        <h2><i class="fas fa-images"></i> Galeri Kegiatan</h2>
+        <div class="gallery">
+            <div class="gallery-item">📸 Pembukaan Madrasah</div>
+            <div class="gallery-item">📸 Pengajian Rutin</div>
+            <div class="gallery-item">📸 Santunan Anak Yatim</div>
+            <div class="gallery-item">📸 Wisuda Tahfidz</div>
+            <div class="gallery-item">📸 Pelatihan Guru</div>
+            <div class="gallery-item">📸 Kegiatan Sosial</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2><i class="fas fa-phone"></i> Hubungi Kami</h2>
+            <p>Kampung Talaga, Desa Nembol, Kec. Mandalawangi<br>
+            Kabupaten Pandeglang, Banten</p>
+            <p><strong>📞 WhatsApp:</strong> 0812-3456-7890 | <strong>📧 Email:</strong> info@talagakautsar.id</p>
+            <div style="margin-top: 2rem;">
+                <a href="https://wa.me/6281234567890" class="cta-btn" style="background: #25D366; color: white; margin: 0 1rem;">
+                    <i class="fab fa-whatsapp"></i> Chat WA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Yayasan Talaga Kautsar Indonesia. <br>
+        <small>Dibuat dengan ❤️ untuk umat | Powered by GitHub Pages</small></p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
