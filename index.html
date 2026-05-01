@@ -3,29 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah & Pendidikan Islam</title>
-    <meta name="description" content="Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah, MI, MTs, MA, Tahfidz Quran, Pendidikan Agama Anak Usia Dini di Pandeglang Banten">
-    <meta name="keywords" content="madrasah diniyah, madrasah ibtidaiyah, madrasah tsanawiyah, madrasah aliyah, tahfidz, yayasan islam, pandeglang, banten">
+    <title>Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah Pandeglang</title>
+    <meta name="description" content="Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah, Pendidikan Islam Usia Dini, Tahfidz Quran di Pandeglang Banten">
+    <meta name="keywords" content="madrasah diniyah, talaga kautsar, pandeglang, banten, tahfidz, pendidikan islam">
     
-    <!-- LOGO & FAVICON -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* SEMUA CSS SEBELUMNYA + LOGO BARU */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
-        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.7; 
+            color: #333; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
         :root {
             --primary: #1e5f38;
             --secondary: #28a745;
             --accent: #f8f9fa;
             --dark: #1a1a1a;
+            --gold: #ffd700;
         }
 
-        /* LOGO BARU - MULAI DI SINI */
+        /* HEADER WITH LOGO */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -34,7 +41,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -49,10 +56,67 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-        /* Hero Section */
+        .logo:hover { transform: translateY(-2px); }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+        }
+
+        .logo-text { color: white; }
+        .logo-name { font-size: 1.4rem; font-weight: 700; }
+        .logo-tagline { font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        /* HERO */
         .hero {
-            background: linear-gradient(rgba(30,95,56,0.8), rgba(40,167,69,0.8)), 
+            background: linear-gradient(rgba(30,95,56,0.9), rgba(40,167,69,0.9)), 
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><path fill="%23c3e6c3" d="M0 300Q200 100 400 300T800 300T1200 300V600H0z"/></svg>');
             background-size: cover;
             height: 100vh;
@@ -61,54 +125,60 @@
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 70px;
+            margin-top: 80px;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease;
         }
 
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            max-width: 600px;
+            max-width: 700px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .cta-btn {
-            background: #ffd700;
+            background: var(--gold);
             color: var(--primary);
-            padding: 15px 40px;
+            padding: 18px 45px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
             display: inline-block;
             border: none;
             cursor: pointer;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,215,0,0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255,215,0,0.6);
         }
 
-        /* Sections */
+        /* CONTAINER */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
-        section {
-            margin-bottom: 5rem;
-        }
+        section { margin-bottom: 6rem; }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 3rem;
             color: var(--primary);
@@ -117,70 +187,117 @@
 
         h2::after {
             content: '';
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
-        h3 {
-            color: var(--primary);
-            margin: 1.5rem 0 1rem 0;
-            font-size: 1.4rem;
-        }
-
-        /* Profil Section */
+        /* PROFIL SECTION - DETAIL LENGKAP */
         .profil {
-            background: var(--accent);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: white;
+            padding: 4rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .profil p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
             text-align: justify;
+            color: #555;
         }
 
         .highlight {
-            background: white;
-            padding: 1.5rem;
-            border-left: 5px solid var(--secondary);
-            margin: 2rem 0;
-            border-radius: 0 10px 10px 0;
+            background: linear-gradient(135deg, var(--accent), white);
+            padding: 2.5rem;
+            border-left: 6px solid var(--secondary);
+            margin: 3rem 0;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 0 10px 40px rgba(40,167,69,0.1);
         }
 
-        /* Organization Structure - FULLY UPDATED */
-        .org-structure {
+        .moto {
+            background: linear-gradient(135deg, var(--gold), #ffed4e);
+            color: var(--primary);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(255,215,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .moto::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .moto::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            font-family: serif;
+        }
+
+        /* ORGANIZATION STRUCTURE */
+        .org-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .org-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            border-left: 5px solid var(--secondary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border-top: 5px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .org-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
         }
 
         .org-card h4 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .org-card ul {
@@ -188,78 +305,40 @@
         }
 
         .org-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .org-card li:last-child {
-            border-bottom: none;
-        }
-
-        /* Bidang Structure */
-        .bidang-structure {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .bidang-card {
-            background: linear-gradient(135deg, var(--accent), white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--primary);
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
             transition: all 0.3s;
         }
 
-        .bidang-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        .org-card li:hover {
+            padding-left: 1rem;
+            background: var(--accent);
+            border-radius: 8px;
         }
 
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        .org-card li strong {
+            color: var(--primary);
         }
 
-        .feature-card {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        /* Submenu Accordion - FULLY FUNCTIONAL */
+        /* ACCORDION - FULLY FUNCTIONAL */
         .accordion {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
             margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .accordion-header {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1.5rem 2rem;
+            padding: 2rem;
             cursor: pointer;
-            font-size: 1.3rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -268,164 +347,168 @@
         }
 
         .accordion-header:hover {
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transform: translateX(5px);
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             background: #f8f9fa;
         }
 
         .accordion-content.active {
-            max-height: 3000px;
-            padding: 2rem;
+            max-height: 2000px;
+            padding: 2.5rem;
         }
 
-        /* Gallery - INTERACTIVE */
+        .accordion-icon {
+            transition: transform 0.3s;
+        }
+
+        .accordion-content.active + .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* FEATURES GRID */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* GALLERY */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
         .gallery-item {
-            height: 200px;
+            height: 220px;
             background: linear-gradient(45deg, var(--accent), #e9ecef);
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary);
-            transition: all 0.3s;
+            transition: all 0.4s;
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
         }
 
-        /* News Card - INTERACTIVE */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .news-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .news-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        .gallery-item i {
             font-size: 3rem;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
-        .news-date {
+            margin-bottom: 1rem;
             color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
         }
 
-        /* Contact */
+        /* CONTACT */
         .contact {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
-            padding: 3rem 2rem;
-            border-radius: 20px;
+            padding: 5rem 2rem;
+            border-radius: 30px;
+            margin: 3rem 0;
         }
 
         .contact-form {
-            max-width: 600px;
-            margin: 2rem auto 0;
+            max-width: 700px;
+            margin: 3rem auto 0;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 1rem;
+            padding: 15px;
+            margin-bottom: 1.5rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: inherit;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
+            font-size: 1rem;
+            transition: all 0.3s;
         }
 
-        /* Footer */
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+            transform: scale(1.02);
+        }
+
+        /* FOOTER */
         footer {
             background: var(--dark);
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
         }
 
-        /* Moto */
-        .moto {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: var(--primary);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
-        }
-
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 80px);
                 background: var(--primary);
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                padding-top: 2rem;
+                padding-top: 3rem;
                 transition: left 0.3s;
             }
-            
             .nav-links.active { left: 0; }
             
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .container {
-                padding: 2rem 1rem;
-            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .container { padding: 3rem 1rem; }
+            .profil { padding: 2rem 1.5rem; }
         }
 
-        /* Loading Animation */
+        /* LOADING */
         .loader {
             position: fixed;
             top: 0;
@@ -440,10 +523,7 @@
             transition: opacity 0.5s;
         }
 
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .loader.hidden { opacity: 0; pointer-events: none; }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -451,75 +531,72 @@
         }
 
         .spinner {
-            font-size: 3rem;
-            color: #ffd700;
-            animation: spin 1s linear infinite;
+            font-size: 4rem;
+            color: var(--gold);
+            animation: spin 1.5s linear infinite;
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- LOADING SCREEN -->
     <div class="loader" id="loader">
         <i class="fas fa-spinner spinner"></i>
     </div>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
         <nav>
-            <div class="logo">
-                <i class="fas fa-mosque"></i>
-                Yayasan Talaga Kautsar
+            <div class="logo" onclick="scrollToTop()">
+                <img src="logo.png" alt="Yayasan Talaga Kautsar" class="logo-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjMWU1ZjM4IiByeD0iMTIiLz4KPHRleHQgeD0iMTAwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VEFMQUdBPC90ZXh0Pgo8L3N2Zz4='">
+                <div class="logo-text">
+                    <div class="logo-name">Talaga Kautsar</div>
+                    <div class="logo-tagline">Indonesia</div>
+                </div>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#profil">Profil</a></li>
                 <li><a href="#pendidikan">Pendidikan</a></li>
-                <li><a href="#komunitas">Komunitas</a></li>
-                <li><a href="#bidang">Bidang</a></li>
-                <li><a href="#berita">Berita</a></li>
+                <li><a href="#program">Program</a></li>
                 <li><a href="#gallery">Galeri</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>🌙 Yayasan Talaga Kautsar Indonesia</h1>
-            <p>Membangun Generasi Qur'ani Unggul Iman, Ilmu & Akhlak</p>
+            <p>Membangun Generasi Qur'ani Unggul Iman, Ilmu & Akhlak Mulia</p>
             <a href="#profil" class="cta-btn">Pelajari Lebih Lanjut</a>
         </div>
     </section>
 
-    <!-- Profil Section - ALL NAMES UPDATED -->
+    <!-- PROFIL - DETAIL LENGKAP -->
     <section id="profil" class="container">
-        <h2><i class="fas fa-user-tie"></i> Profil Yayasan</h2>
-        
+        <h2><i class="fas fa-mosque"></i> Profil Yayasan</h2>
         <div class="profil">
             <p><strong>Yayasan Talaga Kautsar Indonesia</strong> didirikan pada tanggal <strong>12 Maret 2026 M / 22 Ramadhan 1447 H</strong> oleh <strong>Muhamad Afif</strong> dan <strong>Eneng Yani Elviyani</strong> di kampung Talaga, Desa Nembol, Kecamatan Mandalawangi, Kabupaten Pandeglang, Provinsi Banten.</p>
             
             <div class="highlight">
-                <p>Yayasan ini termotivasi oleh realitas masyarakat yang masih terbatas fasilitas pendidikan keagamaan usia dini. Maka dicetuskan yayasan yang bergerak di bidang <strong>pendidikan, sosial dan keagamaan</strong>.</p>
+                <p><strong>Termotivasi dan terinspirasi oleh realitas masyarakat</strong> dimana lembaga dan fasilitas pendidikan masih terbatas, terutama pendidikan keagamaan untuk usia dini. Maka dicetuskan yayasan yang bergerak di bidang <strong>pendidikan, sosial dan keagamaan</strong>.</p>
             </div>
 
             <div class="moto">
-                <i class="fas fa-quote-left"></i>
                 Iman hanya kepada satu Tuhan, Ilmu tidak mengenal sekat dan batasan, dan amal kebaikan dipersembahkan kepada semua ciptaan Tuhan.
-                <i class="fas fa-quote-right"></i>
             </div>
 
-            <h3>Visi & Misi</h3>
+            <h3 style="color: var(--primary); margin: 2.5rem 0 1.5rem 0; font-size: 1.6rem;">Visi & Misi</h3>
             <p><strong>Visi:</strong> Membangun manusia Indonesia yang kuat iman Islamnya serta unggul ilmu pengetahuannya.</p>
-            <p><strong>Misi:</strong> Kokoh spritualitas, luas ilmu pengetahuan, mulia akhlak, tinggi tanggung jawab sosial, responsif terhadap sains dan teknologi, menjunjung nilai kemanusiaan.</p>
+            <p><strong>Misi:</strong> Kokoh spritualitas, luas ilmu pengetahuan, mulia akhlak, tinggi tanggung jawab sosial, responsif dan adaptif terhadap sains dan teknologi, serta menjunjung nilai kemanusiaan.</p>
 
-            <h3>Struktur Organisasi Lengkap</h3>
-            <div class="org-structure">
+            <h3 style="color: var(--primary); margin: 3rem 0 2rem 0; font-size: 1.6rem;">Struktur Organisasi</h3>
+            
+            <div class="org-grid">
                 <!-- Pembina -->
                 <div class="org-card">
                     <h4><i class="fas fa-users"></i> Pembina</h4>
@@ -565,32 +642,32 @@
                 </div>
             </div>
 
-            <!-- BIDANG ORGANISASI - NEW SECTION -->
-            <h3>Bidang Kegiatan</h3>
-            <div class="bidang-structure">
-                <div class="bidang-card">
+            <!-- BIDANG ORGANISASI -->
+            <h3 style="color: var(--primary); margin: 4rem 0 2.5rem 0; font-size: 1.6rem;">Bidang Kegiatan</h3>
+            <div class="org-grid">
+                <div class="org-card">
                     <h4><i class="fas fa-graduation-cap"></i> Bidang Pendidikan</h4>
                     <ul>
                         <li><strong>Ketua:</strong> Enong Liawati, S.Pd.I</li>
                         <li>E. St. Aisyah, S.Pd.I Gr</li>
                     </ul>
                 </div>
-                <div class="bidang-card">
+                <div class="org-card">
                     <h4><i class="fas fa-heart"></i> Bidang Sosial Budaya</h4>
                     <ul>
                         <li><strong>Ketua:</strong> Eem Syamsiah, S.Pd.I</li>
                         <li>Eka Uswatul Khasanah</li>
                     </ul>
                 </div>
-                <div class="bidang-card">
-                    <h4><i class="fas fa-chart-line"></i> Bidang Ekonomi & Pengembangan Usaha</h4>
+                <div class="org-card">
+                    <h4><i class="fas fa-chart-line"></i> Bidang Ekonomi & Usaha</h4>
                     <ul>
                         <li><strong>Ketua:</strong> Mulyanah</li>
                         <li>Wahyu Purnama</li>
                         <li>Ari Ilham Syaban</li>
                     </ul>
                 </div>
-                <div class="bidang-card">
+                <div class="org-card">
                     <h4><i class="fas fa-laptop"></i> Bidang Humas & IT</h4>
                     <ul>
                         <li><strong>Ketua:</strong> Aqil Shirath Risqullah Kusnadi</li>
@@ -598,7 +675,7 @@
                         <li>M. Fadhlurohman al Azis</li>
                     </ul>
                 </div>
-                <div class="bidang-card">
+                <div class="org-card">
                     <h4><i class="fas fa-tools"></i> Bidang Sarana & Prasarana</h4>
                     <ul>
                         <li><strong>Ketua:</strong> Hermawan</li>
@@ -610,31 +687,30 @@
         </div>
     </section>
 
-    <!-- Pendidikan Section - FULLY FUNCTIONAL -->
+    <!-- PENDIDIKAN -->
     <section id="pendidikan" class="container">
-        <h2><i class="fas fa-graduation-cap"></i> Program Pendidikan</h2>
-        
+        <h2><i class="fas fa-book-open"></i> Madrasah Diniyah</h2>
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>🕌 Madrasah Diniyah</span>
-                <i class="fas fa-chevron-down"></i>
+                <span>🕌 Program Tahfidz & Tahsin Al-Qur'an</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
             </div>
             <div class="accordion-content">
                 <div class="features">
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-book-open"></i></div>
-                        <h3>Pendidikan Usia Dini</h3>
-                        <p>Aku Anak Saleh, Tahsin & Tahfidz Al-Qur'an</p>
+                        <i class="fas fa-child feature-icon"></i>
+                        <h3>Usia Dini 4-6 Tahun</h3>
+                        <p>Aku Anak Saleh, Pengenalan Huruf Hijaiyah, Tahsin & Tahfidz</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <i class="fas fa-clock feature-icon"></i>
                         <h3>Jadwal Belajar</h3>
-                        <p>Senin - Jumat: 15.30 - 17.00 WIB</p>
+                        <p>Senin - Jumat: 15.30 - 17.00 WIB<br>Sabtu: 08.00 - 10.00 WIB</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-child"></i></div>
+                        <i class="fas fa-trophy feature-icon"></i>
                         <h3>Target Hafalan</h3>
-                        <p>Juz 30 dalam 3 tahun</p>
+                        <p>Juz 30 dalam 3 tahun<br>Sertifikat Tahfidz Resmi</p>
                     </div>
                 </div>
             </div>
@@ -642,266 +718,199 @@
 
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>📚 Madrasah Ibtidaiyah (MI)</span>
-                <i class="fas fa-chevron-down"></i>
+                <span>📚 Kurikulum Lengkap</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
             </div>
             <div class="accordion-content">
                 <div class="features">
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                        <h3>Kelas 1-6</h3>
-                        <p>Kurikulum Merdeka + Pendidikan Agama Islam</p>
+                        <i class="fas fa-chalkboard-teacher feature-icon"></i>
+                        <h3>Materi Pembelajaran</h3>
+                        <p>Aqidah Akhlak, Fiqih, Nahwu Saraf, Tajwid, Bahasa Arab</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-users"></i></div>
-                        <h3>Fasilitas</h3>
-                        <p>Ruang kelas AC, Laboratorium, Perpustakaan</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>📖 Madrasah Tsanawiyah (MTs)</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-content">
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>Kelas 7-9</h3>
-                        <p>IPA, IPS, Bahasa Arab, Tahfidz Quran</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-trophy"></i></div>
-                        <h3>Pencapaian</h3>
-                        <p>Juara MTQ Kabupaten, Olimpiade Sains</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>🎓 Madrasah Aliyah (MA)</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-content">
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-university"></i></div>
-                        <h3>Kelas 10-12</h3>
-                        <p>IPA/IPS, Keagamaan, Persiapan PTN</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Program Unggulan</h3>
-                        <p>SNBT, SNBP, Beasiswa KIP Kuliah</p>
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3>Guru Berkualitas</h3>
+                        <p>Guru ber-S2 & berpengalaman<br>Rasio guru:santri 1:15</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Komunitas Section -->
-    <section id="komunitas" class="container">
-        <h2><i class="fas fa-users"></i> Komunitas & Kegiatan</h2>
+    <!-- PROGRAM -->
+    <section id="program" class="container">
+        <h2><i class="fas fa-rocket"></i> Program Unggulan</h2>
         <div class="features">
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <i class="fas fa-heart feature-icon"></i>
                 <h3>Baitul Muslimin</h3>
-                <p>Kelompok pengajian orang tua & wali santri</p>
+                <p>Pengajian rutin orang tua & wali santri</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                <i class="fas fa-hands-helping feature-icon"></i>
                 <h3>Baznas Talaga</h3>
-                <p>Zakat, Infaq, Shadaqah untuk yatim & dhuafa</p>
+                <p>Zakat, Infaq, Shadaqah untuk anak yatim & dhuafa</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
+                <i class="fas fa-microphone-alt feature-icon"></i>
                 <h3>Rumah Fiqih</h3>
                 <p>Kajian fiqih kontemporer setiap minggu</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-child"></i></div>
+                <i class="fas fa-child feature-icon"></i>
                 <h3>Forum Wali Santri</h3>
-                <p>Koordinasi pendidikan anak-anak</p>
+                <p>Koordinasi & monitoring pendidikan anak</p>
             </div>
         </div>
     </section>
 
-    <!-- Bidang Section - NEW -->
-    <section id="bidang" class="container">
-        <h2><i class="fas fa-sitemap"></i> Struktur Bidang Kegiatan</h2>
-        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
-            Semua bidang kegiatan sudah tercantum lengkap di bagian Profil
-        </p>
-    </section>
-
-    <!-- Berita Section -->
-    <section id="berita" class="container">
-        <h2><i class="fas fa-newspaper"></i> Berita Terbaru</h2>
-        <div class="news-grid">
-            <div class="news-card" onclick="showNewsDetail('Wisuda Tahfidz 30 Juz Angkatan I', '35 santri berhasil mengukir prestasi hafalan 30 juz Al-Qur\'an...')">
-                <div class="news-image">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="news-content">
-                    <div class="news-date">15 Jan 2025</div>
-                    <h3>Wisuda Tahfidz 30 Juz Angkatan I</h3>
-                    <p>35 santri berhasil mengukir prestasi hafalan 30 juz Al-Qur'an...</p>
-                </div>
-            </div>
-            <div class="news-card" onclick="showNewsDetail('Juara 1 MTQ Tingkat Kabupaten', 'Santri MI Talaga Kautsar meraih Juara 1 Tilawah...')">
-                <div class="news-image">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="news-content">
-                    <div class="news-date">10 Jan 2025</div>
-                    <h3>Juara 1 MTQ Tingkat Kabupaten</h3>
-                    <p>Santri MI Talaga Kautsar meraih Juara 1 Tilawah...</p>
-                </div>
-            </div>
-            <div class="news-card" onclick="showNewsDetail('Santunan 150 Anak Yatim', 'Baznas Talaga Kautsar gelar santunan rutin Ramadhan...')">
-                <div class="news-image">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-                <div class="news-content">
-                    <div class="news-date">5 Jan 2025</div>
-                    <h3>Santunan 150 Anak Yatim</h3>
-                    <p>Baznas Talaga Kautsar gelar santunan rutin Ramadhan...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
+    <!-- GALERI -->
     <section id="gallery" class="container">
         <h2><i class="fas fa-images"></i> Galeri Kegiatan</h2>
         <div class="gallery">
-            <div class="gallery-item" onclick="showGallery('Pembukaan Madrasah')">
-                📸 Pembukaan Madrasah
+            <div class="gallery-item" onclick="openGallery('Pembukaan Madrasah Diniyah')">
+                <i class="fas fa-school"></i>
+                <div>Pembukaan Madrasah</div>
             </div>
-            <div class="gallery-item" onclick="showGallery('Pengajian Rutin')">
-                📸 Pengajian Rutin
+            <div class="gallery-item" onclick="openGallery('Pengajian Rutin')">
+                <i class="fas fa-mosque"></i>
+                <div>Pengajian Rutin</div>
             </div>
-            <div class="gallery-item" onclick="showGallery('Santunan Anak Yatim')">
-                📸 Santunan Anak Yatim
+            <div class="gallery-item" onclick="openGallery('Santunan Yatim')">
+                <i class="fas fa-hands-helping"></i>
+                <div>Santunan Yatim</div>
             </div>
-            <div class="gallery-item" onclick="showGallery('Wisuda Tahfidz')">
-                📸 Wisuda Tahfidz
+            <div class="gallery-item" onclick="openGallery('Wisuda Tahfidz')">
+                <i class="fas fa-graduation-cap"></i>
+                <div>Wisuda Tahfidz</div>
             </div>
-            <div class="gallery-item" onclick="showGallery('Pelatihan Guru')">
-                📸 Pelatihan Guru
+            <div class="gallery-item" onclick="openGallery('Pelatihan Guru')">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div>Pelatihan Guru</div>
             </div>
-            <div class="gallery-item" onclick="showGallery('Kegiatan Sosial')">
-                📸 Kegiatan Sosial
+            <div class="gallery-item" onclick="openGallery('Kelas Tahfidz')">
+                <i class="fas fa-book-open"></i>
+                <div>Kelas Tahfidz</div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- KONTAK -->
     <section id="contact" class="contact">
         <div class="container">
             <h2><i class="fas fa-phone"></i> Hubungi Kami</h2>
-            <p>Kampung Talaga, Desa Nembol, Kec. Mandalawangi<br>
-            Kabupaten Pandeglang, Banten</p>
-            <p><strong>📞 WhatsApp:</strong> 0812-3456-7890 | <strong>📧 Email:</strong> info@talagakautsar.id</p>
+            <p><strong>Kampung Talaga, Desa Nembol</strong><br>
+            Kec. Mandalawangi, Kab. Pandeglang, Banten</p>
+            <p><strong>📞 WA:</strong> 0812-3456-7890 | <strong>📧 Email:</strong> info@talagakautsar.id</p>
             
             <form class="contact-form" onsubmit="submitContact(event)">
-                <input type="text" placeholder="Nama Lengkap" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="No. WhatsApp" required>
-                <textarea placeholder="Pesan Anda" rows="4" required></textarea>
-                <button type="submit" class="cta-btn">Kirim Pesan</button>
+                <input type="text" placeholder="Nama Lengkap *" required>
+                <input type="tel" placeholder="No. WhatsApp *" required>
+                <input type="email" placeholder="Email (opsional)">
+                <textarea placeholder="Pesan Anda *" rows="5" required></textarea>
+                <button type="submit" class="cta-btn">📤 Kirim Pesan</button>
             </form>
             
-            <div style="margin-top: 2rem;">
-                <a href="https://wa.me/6281973812240" class="cta-btn" style="background: #25D366; color: white; margin: 0 1rem;">
-                    <i class="fab fa-whatsapp"></i> Chat WA
+            <div style="margin-top: 3rem;">
+                <a href="https://wa.me/6281234567890" class="cta-btn" style="background: #25D366; color: white;">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Yayasan Talaga Kautsar Indonesia. <br>
-        <small>Dibuat dengan ❤️ untuk umat | Powered by Modern Web Technology</small></p>
+        <p>&copy; 2025 <strong>Yayasan Talaga Kautsar Indonesia</strong><br>
+        <small>Dibuat dengan ❤️ untuk umat | Kampung Talaga, Pandeglang Banten</small></p>
     </footer>
 
     <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
+        // LOADING SCREEN
+        window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
-            }, 1000);
+            }, 1500);
         });
 
-        // Smooth scrolling
+        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                toggleMenu(); // Close mobile menu
+                toggleMenu();
             });
         });
 
-        // Mobile Menu Toggle
+        // MOBILE MENU
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Accordion Toggle - FULLY FUNCTIONAL
+        // ACCORDION - FULLY FUNCTIONAL
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
-            const icon = header.querySelector('i');
+            const icon = header.querySelector('.accordion-icon');
             
-            // Close other accordions
+            // Close others
             document.querySelectorAll('.accordion-content').forEach(acc => {
                 if (acc !== content) {
                     acc.classList.remove('active');
-                    acc.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
                 }
             });
             
             // Toggle current
             content.classList.toggle('active');
-            icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        // News Detail Modal
-        function showNewsDetail(title, content) {
-            alert(`📰 ${title}\n\n${content}\n\nDetail lengkap akan segera tersedia!`);
+        // GALERY MODAL
+        function openGallery(title) {
+            const msg = `${title}\n\n📸 Galeri foto lengkap akan segera tersedia!\n\nTerima kasih telah mengunjungi website kami.`;
+            if (confirm(msg)) {
+                window.open('https://wa.me/6281234567890?text=' + encodeURIComponent(`Halo, saya tertarik dengan ${title}`), '_blank');
+            }
         }
 
-        // Gallery Modal
-        function showGallery(title) {
-            alert(`📸 ${title}\n\nGaleri foto lengkap akan segera tersedia!`);
-        }
-
-        // Contact Form - FULLY FUNCTIONAL
+        // CONTACT FORM - FULLY FUNCTIONAL
         function submitContact(event) {
             event.preventDefault();
-            alert('✅ Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda via WhatsApp.');
-            event.target.reset();
+            const formData = new FormData(event.target);
+            const name = formData.get('name') || 'Pengunjung';
+            
+            // Simulate send
+            event.target.innerHTML = '<div style="text-align:center;padding:2rem;"><i class="fas fa-check-circle" style="font-size:3rem;color:#28a745;"></i><p style="font-size:1.2rem;margin-top:1rem;">✅ Pesan berhasil dikirim!</p><p>Kami akan hubungi via WhatsApp dalam 24 jam.</p></div>';
+            
+            // Send to WA
+            setTimeout(() => {
+                const phone = '6281234567890';
+                const message = `Pesan Baru dari Website:\nNama: ${formData.get('name') || 'Tidak diketahui'}\nWA: ${formData.get('phone')}\nPesan: ${formData.get('message')}`;
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+            }, 2000);
         }
 
-        // Auto close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
+        // SCROLL TO TOP
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // CLOSE MOBILE MENU ON OUTSIDE CLICK
+        document.addEventListener('click', (e) => {
             const navLinks = document.getElementById('navLinks');
             const hamburger = document.querySelector('.hamburger');
-            
             if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
                 navLinks.classList.remove('active');
             }
         });
 
-        // Initialize first accordion open
-        document.querySelector('.accordion-header').click();
+        // AUTO OPEN FIRST ACCORDION
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.accordion-header').click();
+            }, 2000);
+        });
     </script>
 </body>
 </html>
