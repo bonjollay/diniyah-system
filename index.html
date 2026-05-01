@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah</title>
+    <title>Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah & Pendidikan Islam</title>
+    <meta name="description" content="Yayasan Talaga Kautsar Indonesia - Madrasah Diniyah, MI, MTs, MA, Tahfidz Quran, Pendidikan Agama Anak Usia Dini di Pandeglang Banten">
+    <meta name="keywords" content="madrasah diniyah, madrasah ibtidaiyah, madrasah tsanawiyah, madrasah aliyah, tahfidz, yayasan islam, pandeglang, banten">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -65,11 +67,43 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: #ffd700;
             transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: #ffd700;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
         }
 
         /* Hero Section */
@@ -108,6 +142,7 @@
             font-size: 1.1rem;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+            display: inline-block;
         }
 
         .cta-btn:hover {
@@ -195,15 +230,6 @@
             font-size: 1.3rem;
         }
 
-        .org-card ul {
-            list-style: none;
-        }
-
-        .org-card li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
         /* Features Grid */
         .features {
             display: grid;
@@ -230,6 +256,43 @@
             margin-bottom: 1rem;
         }
 
+        /* Submenu Accordion */
+        .accordion {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .accordion-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: var(--secondary);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 2000px;
+            padding: 2rem;
+        }
+
         /* Gallery */
         .gallery {
             display: grid;
@@ -239,7 +302,7 @@
 
         .gallery-item {
             height: 200px;
-            background: var(--accent);
+            background: linear-gradient(45deg, var(--accent), #e9ecef);
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -247,10 +310,67 @@
             font-size: 1.2rem;
             color: var(--primary);
             transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* News Card */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Contact */
@@ -260,6 +380,21 @@
             text-align: center;
             padding: 3rem 2rem;
             border-radius: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
         }
 
         /* Footer */
@@ -286,9 +421,22 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hamburger { display: flex; }
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
             }
+            
+            .nav-links.active { left: 0; }
             
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -298,9 +446,45 @@
                 padding: 2rem 1rem;
             }
         }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            font-size: 3rem;
+            color: #ffd700;
+            animation: spin 1s linear infinite;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <i class="fas fa-spinner spinner"></i>
+    </div>
+
     <!-- Header -->
     <header>
         <nav>
@@ -308,11 +492,17 @@
                 <i class="fas fa-mosque"></i>
                 Yayasan Talaga Kautsar
             </div>
-            <ul class="nav-links">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#profil">Profil</a></li>
-                <li><a href="#program">Program</a></li>
-                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#komunitas">Komunitas</a></li>
+                <li><a href="#berita">Berita</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
         </nav>
@@ -332,7 +522,7 @@
         <h2><i class="fas fa-user-tie"></i> Profil Yayasan</h2>
         
         <div class="profil">
-            <p><strong>Yayasan Talaga Kautsar Indonesia</strong> didirikan pada tanggal <strong>12 Maret 2026 M / 22 Ramadhan 1447 H</strong> oleh <strong>Muhamad Afif</strong> dan <strong>Eneng Yani Elviyani</strong> di kampung Talaga, Desa Nembol, Kecamatan Mandalawangi, Kabupaten Pandeglang, Provinsi Banten.</p>
+            <p><strong>Yayasan Talaga Kautsar Indonesia</strong> didirikan pada tanggal <strong>12 Maret 2024 M / 22 Ramadhan 1445 H</strong> oleh <strong>Muhamad Afif</strong> dan <strong>Eneng Yani Elviyani</strong> di kampung Talaga, Desa Nembol, Kecamatan Mandalawangi, Kabupaten Pandeglang, Provinsi Banten.</p>
             
             <div class="highlight">
                 <p>Yayasan ini termotivasi oleh realitas masyarakat yang masih terbatas fasilitas pendidikan keagamaan usia dini. Maka dicetuskan yayasan yang bergerak di bidang <strong>pendidikan, sosial dan keagamaan</strong>.</p>
@@ -356,7 +546,6 @@
                         <li><strong>Dr. Muhamad Afif, MA</strong></li>
                     </ul>
                 </div>
-
                 <div class="org-card">
                     <h4><i class="fas fa-eye"></i> Dewan Pengawas</h4>
                     <ul>
@@ -366,7 +555,6 @@
                         <li>Aning</li>
                     </ul>
                 </div>
-
                 <div class="org-card">
                     <h4><i class="fas fa-handshake"></i> Dewan Penasihat</h4>
                     <ul>
@@ -377,7 +565,6 @@
                         <li>Abdullah</li>
                     </ul>
                 </div>
-
                 <div class="org-card">
                     <h4><i class="fas fa-user-chair"></i> Pengurus</h4>
                     <ul>
@@ -390,61 +577,158 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <h3>Bidang Kerja</h3>
-            <div class="org-structure">
-                <div class="org-card">
-                    <h4>📚 Pendidikan</h4>
-                    <p><strong>Ketua:</strong> Enong Liawati, S.Pd.I<br>
-                    <strong>Anggota:</strong> E. St. Aisyah, S.Pd.I Gr</p>
+    <!-- Pendidikan Section -->
+    <section id="pendidikan" class="container">
+        <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>🕌 Madrasah Diniyah</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Pendidikan Usia Dini</h3>
+                        <p>Aku Anak Saleh, Tahsin & Tahfidz Al-Qur'an</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Jadwal Belajar</h3>
+                        <p>Senin - Jumat: 15.30 - 17.00 WIB</p>
+                    </div>
                 </div>
-                <div class="org-card">
-                    <h4>🤝 Sosial Budaya</h4>
-                    <p><strong>Ketua:</strong> Eem Syamsiah, S.Pd.I<br>
-                    <strong>Anggota:</strong> Eka Uswatul Khasanah</p>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>📚 Madrasah Ibtidaiyah (MI)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3>Kelas 1-6</h3>
+                        <p>Kurikulum Merdeka + Pendidikan Agama Islam</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h3>Fasilitas</h3>
+                        <p>Ruang kelas AC, Laboratorium, Perpustakaan</p>
+                    </div>
                 </div>
-                <div class="org-card">
-                    <h4>💰 Ekonomi & Usaha</h4>
-                    <p><strong>Ketua:</strong> Mulyanah<br>
-                    <strong>Anggota:</strong> Wahyu Purnama, Ari Ilham Syaban</p>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>📖 Madrasah Tsanawiyah (MTs)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Kelas 7-9</h3>
+                        <p>IPA, IPS, Bahasa Arab, Tahfidz Quran</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>Pencapaian</h3>
+                        <p>Juara MTQ Kabupaten, Olimpiade Sains</p>
+                    </div>
                 </div>
-                <div class="org-card">
-                    <h4>📱 Humas & IT</h4>
-                    <p><strong>Ketua:</strong> Aqil Shirath Risqullah Kusnadi<br>
-                    <strong>Anggota:</strong> Dudung Sugriwa, M. Fadhlurohman al Azis</p>
-                </div>
-                <div class="org-card">
-                    <h4>🏗️ Sarana Prasarana</h4>
-                    <p><strong>Ketua:</strong> Hermawan<br>
-                    <strong>Anggota:</strong> Ayasy Almuhandis, Abdul Fatah</p>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>🎓 Madrasah Aliyah (MA)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-university"></i></div>
+                        <h3>Kelas 10-12</h3>
+                        <p>IPA/IPS, Keagamaan, Persiapan PTN</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Program Unggulan</h3>
+                        <p>SNBT, SNBP, Beasiswa KIP Kuliah</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Program -->
-    <section id="program" class="container">
-        <h2><i class="fas fa-book-open"></i> Program Unggulan</h2>
+    <!-- Komunitas Section -->
+    <section id="komunitas" class="container">
+        <h2><i class="fas fa-users"></i> Komunitas</h2>
         <div class="features">
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-mosque"></i></div>
-                <h3>Madrasah Diniyah</h3>
-                <p>Pendidikan agama Islam untuk anak usia dini</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-users"></i></div>
-                <h3>Kelas Tahfidz</h3>
-                <p>Program hafalan Al-Qur'an dengan metode efektif</p>
-            </div>
-            <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-heart"></i></div>
-                <h3>Bantuan Sosial</h3>
-                <p>Santunan anak yatim dan program kemanusiaan</p>
+                <h3>Baitul Muslimin</h3>
+                <p>Kelompok pengajian orang tua & wali santri</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-laptop"></i></div>
-                <h3>Digitalisasi</h3>
-                <p>Pendidikan berbasis teknologi informasi</p>
+                <div class="feature-icon"><i class="fas fa-hands-helping"></i></div>
+                <h3>Baznas Talaga</h3>
+                <p>Zakat, Infaq, Shadaqah untuk yatim & dhuafa</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3>Rumah Fiqih</h3>
+                <p>Kajian fiqih kontemporer setiap minggu</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-child"></i></div>
+                <h3>Forum Wali Santri</h3>
+                <p>Koordinasi pendidikan anak-anak</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Section -->
+    <section id="berita" class="container">
+        <h2><i class="fas fa-newspaper"></i> Berita Terbaru</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">15 Jan 2025</div>
+                    <h3>Wisuda Tahfidz 30 Juz Angkatan I</h3>
+                    <p>35 santri berhasil mengukir prestasi hafalan 30 juz Al-Qur'an...</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">10 Jan 2025</div>
+                    <h3>Juara 1 MTQ Tingkat Kabupaten</h3>
+                    <p>Santri MI Talaga Kautsar meraih Juara 1 Tilawah...</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">5 Jan 2025</div>
+                    <h3>Santunan 150 Anak Yatim</h3>
+                    <p>Baznas Talaga Kautsar gelar santunan rutin Ramadhan...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -469,6 +753,15 @@
             <p>Kampung Talaga, Desa Nembol, Kec. Mandalawangi<br>
             Kabupaten Pandeglang, Banten</p>
             <p><strong>📞 WhatsApp:</strong> 0812-3456-7890 | <strong>📧 Email:</strong> info@talagakautsar.id</p>
+            
+            <div class="contact-form">
+                <input type="text" placeholder="Nama Lengkap" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="No. WhatsApp" required>
+                <textarea placeholder="Pesan Anda" rows="4" required></textarea>
+                <button class="cta-btn">Kirim Pesan</button>
+            </div>
+            
             <div style="margin-top: 2rem;">
                 <a href="https://wa.me/6281973812240" class="cta-btn" style="background: #25D366; color: white; margin: 0 1rem;">
                     <i class="fab fa-whatsapp"></i> Chat WA
@@ -479,11 +772,18 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Yayasan Talaga Kautsar Indonesia. <br>
-        <small>Dibuat dengan ❤️ untuk umat | Powered by GitHub Pages</small></p>
+        <p>&copy; 2025 Yayasan Talaga Kautsar Indonesia. <br>
+        <small>Dibuat dengan ❤️ untuk umat | Powered by Modern Web Technology</small></p>
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -491,7 +791,48 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                toggleMenu(); // Close mobile menu
             });
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            // Close other accordions
+            document.querySelectorAll('.accordion-content').forEach(acc => {
+                if (acc !== content) {
+                    acc.classList.remove('active');
+                    acc.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current
+            content.classList.toggle('active');
+            icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Contact Form
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+
+        // Auto close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
